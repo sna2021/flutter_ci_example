@@ -16,7 +16,7 @@ jobs:
         os: [ubuntu-18.04]
     steps:
      - name: Create SSH key
-       run: |
+     - run: |
            mkdir -p ~/.ssh/
            echo "$SSH_PRIVATE_KEY" > ../private.key
            sudo chmod 600 ../private.key
