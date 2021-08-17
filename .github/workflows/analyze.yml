@@ -25,6 +25,7 @@ jobs:
           if_key_exists: fail
       - name: TEST SSH key
         run: |
+           ls /home/runner/.ssh/
            ssh -T git@github.com
         shell: bash
       # Set up Flutter.
