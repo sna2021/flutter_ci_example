@@ -19,11 +19,11 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          name: id_rsa # optional
+          #name: id_rsa # optional
           known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
           #config: ${{ secrets.CONFIG }} # ssh_config; optional
           if_key_exists: fail
-      - name: Create SSH key
+      - name: TEST SSH key
         run: |
            ssh -T git@github.com
         shell: bash
