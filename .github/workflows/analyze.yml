@@ -15,18 +15,18 @@ jobs:
        # os: [ubuntu-18.04, windows-2019, macos-10.15]
         os: [ubuntu-18.04]
     steps:
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          name: id_rsa # optional
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+          #config: ${{ secrets.CONFIG }} # ssh_config; optional
+          if_key_exists: fail
       - name: Create SSH key
         run: |
-           mkdir -p ~/.ssh/
-           echo "$SSH_PRIVATE_KEY" > ../private.key
-           sudo chmod 600 ../private.key
-           echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
            ssh -T git@github.com
         shell: bash
-        env:
-         SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
-         SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
-         SSH_KEY_PATH: ${{ github.workspace }}/../private.key
       # Set up Flutter.
 #      - name: Clone Flutter repository with master channel
 #        uses: subosito/flutter-action@v1.5.0
