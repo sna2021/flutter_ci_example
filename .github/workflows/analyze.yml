@@ -15,10 +15,16 @@ jobs:
        # os: [ubuntu-18.04, windows-2019, macos-10.15]
         os: [ubuntu-18.04]
     steps:
-      - name: Install SSH key
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+#      - name: Install SSH key
+#        uses: webfactory/ssh-agent@v0.5.3
+#        with:
+#          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+#          ssh-known_hosts-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Install SSH Key
+          uses: shimataro/ssh-key-action@v2
+          with:
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
       - name: TEST SSH key
         run: |
            ls /home/runner/.ssh/
