@@ -28,6 +28,8 @@ jobs:
           #known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }
           known_hosts: unnecessary
           config: ${{ secrets.CONFIG }}
+      - name: Check SSH Files
+        run: ls -al ~/.ssh
       - name: Testing SSH connection
         run: git clone git@github.com:sna2021/enviroment_test.git tmp
 #      - name: Clone Flutter repository with master channel
