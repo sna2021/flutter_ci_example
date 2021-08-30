@@ -26,8 +26,8 @@ jobs:
         run: ssh-keyscan github.com
       - name: Check SSH
         run: ls -al ~/.ssh
-      - name: Git clone
-        run: git clone git@github.com:smmarty/friflex_mobile_uikit.git
+      - name: Testing SSH connection
+        run: ssh -T git@github.com
 #      - name: Clone Flutter repository with master channel
 #        uses: subosito/flutter-action@v1.5.0
 #        with:
