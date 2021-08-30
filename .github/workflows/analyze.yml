@@ -22,10 +22,10 @@ jobs:
 #          name: id_rsa
 #          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
       - name: Install SSH Key
-      uses: kielabokkie/ssh-key-and-known-hosts-action@v1
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        ssh-host: github.com
+        uses: kielabokkie/ssh-key-and-known-hosts-action@v1
+        with:
+         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+         ssh-host: github.com
       - name: Adding Known Hosts
         run: ssh-keyscan github.com
       - name: Git clone
