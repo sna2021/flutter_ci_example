@@ -16,7 +16,7 @@ jobs:
         os: [ubuntu-18.04]
     steps:
       - name: Create file
-      - uses: finnp/create-file-action@master
+        uses: finnp/create-file-action@master
         env:
           FILE_NAME: .ssh/id_rsa.pub
           FILE_DATA: ${{ secrets.SSH_PUBLIC_KEY }}
