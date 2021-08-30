@@ -23,10 +23,8 @@ jobs:
           #known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }
           known_hosts: unnecessary
           config: ${{ secrets.CONFIG }}
-      - name: Adding Known Hosts
-        run: ssh-keyscan github.com
       - name: Testing SSH connection
-        run: ssh -T git@github.com
+        run: git clone git@github.com:sna2021/enviroment_test.git tmp
 #      - name: Clone Flutter repository with master channel
 #        uses: subosito/flutter-action@v1.5.0
 #        with:
