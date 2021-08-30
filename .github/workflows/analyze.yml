@@ -15,12 +15,17 @@ jobs:
        # os: [ubuntu-18.04, windows-2019, macos-10.15]
         os: [ubuntu-18.04]
     steps:
+#      - name: Install SSH Key
+#        uses: shimataro/ssh-key-action@v2
+#        with:
+#          key: ${{ secrets.SSH_PRIVATE_KEY }}
+#          name: id_rsa
+#          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
       - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          name: id_rsa
-          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+      uses: kielabokkie/ssh-key-and-known-hosts-action@v1
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        ssh-host: github.com
       - name: Adding Known Hosts
         run: ssh-keyscan github.com
       - name: Git clone
