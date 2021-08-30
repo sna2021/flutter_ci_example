@@ -24,8 +24,6 @@ jobs:
           config: ${{ secrets.CONFIG }}
       - name: Adding Known Hosts
         run: ssh-keyscan github.com
-      - name: Check SSH
-        run: ls -al ~/.ssh
       - name: Testing SSH connection
         run: ssh -T git@github.com
 #      - name: Clone Flutter repository with master channel
