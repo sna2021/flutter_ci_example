@@ -23,11 +23,13 @@ jobs:
           known_hosts: ${{ secrets.HOSTS }}
       - name: Adding Known Hosts
         run: ssh-keyscan github.com
+      - name: Git clone
+        run: git clone git@github.com:smmarty/friflex_mobile_uikit.git
 #      - name: Clone Flutter repository with master channel
 #        uses: subosito/flutter-action@v1.5.0
 #        with:
 #          channel: master
-      #- run: flutter doctor -v
+#      - run: flutter doctor -v
 
       # Checkout gallery code and get packages.
 #      - name: Checkout gallery code
