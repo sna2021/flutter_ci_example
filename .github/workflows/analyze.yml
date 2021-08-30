@@ -20,7 +20,7 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           name: id_rsa
-          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+          known_hosts: ${{ secrets.HOSTS }}
       - name: Clone Flutter repository with master channel
         uses: subosito/flutter-action@v1.5.0
         with:
