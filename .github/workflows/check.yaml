@@ -20,7 +20,6 @@ jobs:
       - name: Setup Fastlane
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.6'
-          working-directory: './'
+          ruby-version: '2.6.3'
         env:
           ImageOS: macos1015
