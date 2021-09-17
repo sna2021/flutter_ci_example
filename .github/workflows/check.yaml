@@ -18,4 +18,4 @@ jobs:
     steps:
       # Setup Ruby, Bundler, and Gemfile dependencies
       - name: Setup Fastlane
-        run: sh ./.github/scripts/ruby.sh
+        run: ruby -v
