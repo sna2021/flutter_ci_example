@@ -14,9 +14,12 @@ on:
 jobs:
   fastlane-deploy:
     runs-on: [self-hosted]
+    env:
+      ImageOS: macos1015
     steps:
       # Setup Ruby, Bundler, and Gemfile dependencies
       - name: Setup Fastlane
+
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.6'
