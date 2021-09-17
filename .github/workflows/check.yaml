@@ -1,4 +1,4 @@
-name: Check ruby
+name: Check
 on:
   workflow_dispatch:
     # Enable manual run
@@ -16,8 +16,9 @@ jobs:
   fastlane-deploy:
     runs-on: [self-hosted]
     steps:
-      # Setup Ruby, Bundler, and Gemfile dependencies
-      - name: Setup Fastlane
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '2.6'
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Install Fastlane
+        run: |
+          brew update
+          brew install fastlane
