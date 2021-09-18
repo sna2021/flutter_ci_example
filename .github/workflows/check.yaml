@@ -18,9 +18,4 @@ jobs:
     steps:
       # Setup Ruby, Bundler, and Gemfile dependencies
       - name: Setup Fastlane
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '2.6'
-          path: './'
-        env:
-          ImageOS: macos1015
+        run: ruby -v
