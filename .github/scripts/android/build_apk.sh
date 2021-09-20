@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-var flavor = $BUILD_FLAVOR
+flavor="$BUILD_FLAVOR"
 
 echo -n "Build ${flavor} apk"
 
