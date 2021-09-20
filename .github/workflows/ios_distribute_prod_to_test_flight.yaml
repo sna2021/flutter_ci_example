@@ -1,0 +1,50 @@
+# Distribute to testflight
+name: Distribute prod to testflight
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'v*'
+
+jobs:
+  deploy_ios:
+    name: Deploy beta build to TestFlight
+    runs-on: [ self-hosted ]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.2'
+          channel: 'stable'
+
+      - name: Check flow
+        run: sh ./.github/scripts/flutter_check_flow.sh
+
+      - name: Build ios
+        run: sh ./.github/scripts/ios/build_ios.sh
+        env:
+          BUILD_FLAVOR: prod
+
+      - name: Distribute to testflight
+        run: sh ./.github/scripts/testflight_distributor.sh
+        env:
+          APP_BUNDLE_ID: 'ru.albion.Bristol'
+          IPA_FILE_PATH: './Runner.ipa'
+          CONFIGURATION: 'prodRelease'
+          WORKSPACE: 'Runner.xcworkspace'
+          SCHEME: 'prod'
+          DEVELOPER_APP_IDENTIFIER: 'ru.albion.Bristol'
+          PROVISIONING_PROFILE_SPECIFIER: 'AppStore_ru.albion.Bristol'
+          APP_STORE_CONNECT_TEAM_ID: ${{ secrets.APP_STORE_CONNECT_TEAM_ID }}
+          DEVELOPER_APP_ID: ${{ secrets.DEVELOPER_APP_ID }}
+          DEVELOPER_PORTAL_TEAM_ID: ${{ secrets.DEVELOPER_PORTAL_TEAM_ID }}
+          FASTLANE_APPLE_ID: ${{ secrets.FASTLANE_APPLE_ID }}
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          GIT_AUTHORIZATION: ${{ secrets.GIT_AUTHORIZATION }}
+          TEMP_KEYCHAIN_PASSWORD: ${{ secrets.TEMP_KEYCHAIN_PASSWORD }}
+          TEMP_KEYCHAIN_USER: ${{ secrets.TEMP_KEYCHAIN_USER }}

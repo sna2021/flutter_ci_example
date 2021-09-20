@@ -1,0 +1,51 @@
+name: Flutter Upload prod ios to Firebase
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'release/**'
+    tags:
+      - 'v.*'
+      - 'prod'
+      - 'firebase'
+jobs:
+  build:
+    runs-on: [self-hosted]
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.2'
+          channel: "stable"
+
+      - name: Check flow
+        run: sh ./.github/scripts/flutter_check_flow.sh
+
+      - name: Build ios
+        run: sh ./.github/scripts/ios/build_ios.sh
+        env:
+          BUILD_FLAVOR: prod
+
+      - name: Distribute to firebase
+        run: sh ./.github/scripts/ios_firebase_distributor.sh
+        env:
+          APP_BUNDLE_ID: 'ru.albion.Bristol'
+          IPA_FILE_PATH: './ios/Runner.ipa'
+          CONFIGURATION: 'prodRelease'
+          WORKSPACE: 'Runner.xcworkspace'
+          SCHEME: 'prod'
+          PROVISIONING_PROFILE_SPECIFIER: 'AppStore_ru.albion.Bristol'
+          FIREBASE_IOS_APP_ID: ${{ secrets.FIREBASE_IOS_APP_ID }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_GROUPS: inner
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          GIT_AUTHORIZATION: ${{ secrets.GIT_AUTHORIZATION }}
+          TEMP_KEYCHAIN_PASSWORD: ${{ secrets.TEMP_KEYCHAIN_PASSWORD }}
+          TEMP_KEYCHAIN_USER: ${{ secrets.TEMP_KEYCHAIN_USER }}
+
+
