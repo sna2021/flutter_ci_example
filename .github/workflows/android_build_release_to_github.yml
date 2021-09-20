@@ -36,8 +36,8 @@ jobs:
         env:
           BUILD_FLAVOR: prod
 
-      - name: Upload artifact to Github
-        uses: actions/upload-artifact@v1
-        with:
-          name: release-apk
-          path: build/app/outputs/apk/prod/release/app-prod-release.apk
+#      - name: Upload artifact to Github
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: release-apk
+#          path: build/app/outputs/apk/prod/release/app-prod-release.apk
