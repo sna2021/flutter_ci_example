@@ -1,0 +1,10 @@
+name: Analyze code
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: [self-hosted]
+
+    steps:
+      - name: Check Ruby version
+        run: cd android | source ~/.bash_profile | ruby -v
