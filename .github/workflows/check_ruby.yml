@@ -1,4 +1,4 @@
-name: Analyze code
+name: Check ruby
 on:
   workflow_dispatch:
 jobs:
