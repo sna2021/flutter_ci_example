@@ -7,4 +7,4 @@ jobs:
 
     steps:
       - name: Check Ruby version
-        run: cd android | bundle exec ruby -v
+        run: cd android | ruby -v
