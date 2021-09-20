@@ -1,0 +1,16 @@
+current directory: /Volumes/Work/Projects/Pets/flutterCiCd/android/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+/Users/nikita/.rvm/rubies/ruby-3.0.0/bin/ruby -I /Users/nikita/.rvm/rubies/ruby-3.0.0/lib/ruby/3.0.0 -r ./siteconf20210920-90938-hmy51s.rb extconf.rb
+checking for -lstdc++... yes
+creating Makefile
+
+current directory: /Volumes/Work/Projects/Pets/flutterCiCd/android/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+make "DESTDIR=" clean
+
+current directory: /Volumes/Work/Projects/Pets/flutterCiCd/android/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+make "DESTDIR="
+compiling unf.cc
+linking shared-object unf_ext.bundle
+
+current directory: /Volumes/Work/Projects/Pets/flutterCiCd/android/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 unf_ext.bundle ./.gem.20210920-90938-eyy2do
