@@ -10,16 +10,16 @@ on:
         default: appbundle
 
 jobs:
+  assamble:
+    uses: sna2021/flutter_ci_example/.github/actions/assamble_android.yml@main
+    with:
+      build_type: apk
+      build_flavor: prod
+
   distribute:
     name: Distribute to Github
     runs-on: ubuntu-latest
     steps:
-      - uses: sna2021/flutter_ci_example/.github/actions/prepare_workflow.yml@main
-      - uses: sna2021/flutter_ci_example/.github/actions/assamble_android.yml@main
-        with:
-          build_type: apk
-          build_flavor: prod
-
       - name: Upload apk to Github
         if: ${{ github.event.inputs.build_type == 'apk' }}
         uses: actions/upload-artifact@v1
