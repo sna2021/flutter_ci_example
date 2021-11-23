@@ -9,11 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run read-yaml action
-        id: var
+        id: build_version
         uses: KJ002/read-yaml@1.5
         with:
           file: './pubspec.yaml'
           key-path: '["version"]'
 
       - name: Get read-yaml output
-        run: echo "${{ steps.var.outputs.data }}"
+        run: echo "${{ steps.build_version.outputs.data }}"
