@@ -15,10 +15,12 @@ jobs:
     with:
       build_type: apk
       build_flavor: prod
+      flutter_version: 2.5
 
   distribute:
     name: Distribute to Github
     runs-on: ubuntu-latest
+    needs: assamble
     steps:
       - name: Upload apk to Github
         if: ${{ github.event.inputs.build_type == 'apk' }}
