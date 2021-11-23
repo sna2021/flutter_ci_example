@@ -14,11 +14,8 @@ jobs:
     name: Distribute to Github
     runs-on: ubuntu-latest
     steps:
-      - name: Prepare flutter
-        uses: sna2021/flutter_ci_example/.github/actions/prepare_workflow.yml@main
-
-      - name: Assamble android
-        uses: sna2021/flutter_ci_example/.github/actions/assamble_android.yml@main
+      - uses: sna2021/flutter_ci_example/.github/actions/prepare_workflow.yml@main
+      - uses: sna2021/flutter_ci_example/.github/actions/assamble_android.yml@main
         with:
           build_type: apk
           build_flavor: prod
