@@ -10,6 +10,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Run read-yaml action
         id: var
+        uses: KJ002/read-yaml@1.5
         with:
           file: './pubspec.yaml'
           key-path: '["version"]'
