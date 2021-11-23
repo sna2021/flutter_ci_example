@@ -1,43 +1,38 @@
 # Собираем apk и отправляем его в github
-name: Build prod apk
+name: Distribute to Github
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - 'release/**'
-    tags:
-      - 'v.*'
-      - 'prod'
+    inputs:
+      build_type:
+        description: 'apk or appbundle'
+        required: true
+        default: appbundle
 
 jobs:
-  build:
+  distribute:
+    name: Distribute to Github
     runs-on: [ self-hosted ]
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
+      - name: Prepare flutter
+        uses: sna2021/flutter_ci_example/.github/actions/prepare_workflow.yml@main
+
+      - name: Assamble android
+        uses: sna2021/flutter_ci_example/.github/actions/assamble_android.yml@main
         with:
-          java-version: '12.x'
-      - uses: subosito/flutter-action@v1
+          build_type: apk
+          build_flavor: prod
+
+      - name: Upload apk to Github
+        if: ${{ github.event.inputs.build_type == 'apk' }}
+        uses: actions/upload-artifact@v1
         with:
-          flutter-version: '2.2'
-          channel: 'stable'
+          name: release-apk
+          path: ./build/app/outputs/flutter-apk/app-prod-release.apk
 
-#      - name: Check flow
-#        run: sh ./.github/scripts/flutter_check_flow.sh
-
-#      - name: Decrypt Android keys
-#        run: sh ./.github/scripts/android/decrypt_android_keys.sh
-#        env:
-#          ANDROID_KEYS_SECRET_PASSPHRASE: ${{ secrets.ANDROID_KEYS_SECRET_PASSPHRASE }}
-
-      - name: Build apk
-        run: sh ./.github/scripts/android/build_apk.sh
-        env:
-          BUILD_FLAVOR: prod
-
-#      - name: Upload artifact to Github
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: release-apk
-#          path: build/app/outputs/apk/prod/release/app-prod-release.apk
+      - name: Upload appbundle to Github
+        if: ${{ github.event.inputs.build_type == 'appbundle' }}
+        uses: actions/upload-artifact@v1
+        with:
+          name: release-aab
+          path: ./build/app/outputs/bundle/prodRelease/app-prod-release.aab
