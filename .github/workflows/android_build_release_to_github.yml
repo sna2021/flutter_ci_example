@@ -11,7 +11,7 @@ on:
 
 jobs:
   assamble:
-    uses: sna2021/flutter_ci_example/.github/actions/assamble_android.yml@main
+    uses: sna2021/flutter_ci_example/.github/workflows/assamble_android.yml@main
     with:
       build_type: apk
       build_flavor: prod
