@@ -1,9 +1,8 @@
 name: Prepare project
-on:
-  workflow_call:
-    secrets:
-      flutter_version:
-        required: true
+inputs:
+  flutter_version:
+    required: true
+    default: 1.22
 
 runs:
   using: "composite"
