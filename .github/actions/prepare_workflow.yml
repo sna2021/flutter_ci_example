@@ -6,7 +6,7 @@ on:
         required: true
 jobs:
   build:
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     name: Analyze project code
     steps:
       - uses: actions/checkout@v2

@@ -15,7 +15,7 @@ on:
 jobs:
   build:
     name: Build prod ${{ inputs.build_type }}
-    runs-on: [ self-hosted ]
+    runs-on: ubuntu-latest
     steps:
 #      - name: Decrypt Android keys
 #        run: sh ./.github/scripts/android/decrypt_android_keys.sh
