@@ -22,8 +22,8 @@ jobs:
 #        env:
 #          ANDROID_KEYS_SECRET_PASSPHRASE: ${{ secrets.android_secrets }}
 
-      - name: Build ${{ inputs.build_type }}
-        run: sh ./.github/scripts/android/build_android.sh
-        env:
-          BUILD_FLAVOR: ${{ inputs.build_flavor }}
-          ANDROID_BUILD_TYPE: ${{ inputs.build_type }}
+#      - name: Build ${{ inputs.build_type }}
+#        run: sh ./.github/scripts/android/build_android.sh
+#        env:
+#          BUILD_FLAVOR: ${{ inputs.build_flavor }}
+#          ANDROID_BUILD_TYPE: ${{ inputs.build_type }}
