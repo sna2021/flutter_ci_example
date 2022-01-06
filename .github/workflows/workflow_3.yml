@@ -1,0 +1,15 @@
+name: _Workflow 3
+
+on:
+  workflow_call:
+    inputs:
+      input_data:
+        required: true
+        type: string
+jobs:
+  build:
+    name: workflow 3
+    runs-on: [ self-hosted ]
+    steps:
+      - name: Run script 3
+        run: sh ./.github/scripts/script_3.sh
