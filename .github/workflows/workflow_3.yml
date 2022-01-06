@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: workflow 3
-    runs-on: [ self-hosted ]
+    runs-on: ubuntu-latest
     steps:
       - name: Run script 3
         run: sh ./.github/scripts/script_3.sh
