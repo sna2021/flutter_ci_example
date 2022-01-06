@@ -10,15 +10,15 @@ jobs:
     name: Main workflow
     steps:
       - name: workflow 1
-        uses: sna2021/flutter_ci_example/.github/workflows/workflow_1.yml
+        uses: ./.github/workflows/workflow_1.yml
         with:
           input_data: string1
       - name: workflow 2
-        uses: sna2021/flutter_ci_example/.github/workflows/workflow_2.yml
+        uses: ./.github/workflows/workflow_2.yml
         with:
           input_data: string2
       - name: workflow 3
-        uses: sna2021/flutter_ci_example/.github/workflows/workflow_3.yml
+        uses: ./.github/workflows/workflow_3.yml
         with:
           input_data: string3
 
