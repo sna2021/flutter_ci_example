@@ -14,7 +14,7 @@ on:
 jobs:
   distribute_to_firebase:
     name: Distribute IOS to TestFlight [STAGE]
-    uses: smmarty/maxidom_mobile/.github/workflows/_distribute_ios_to_test_flight.yaml.yml@main
+    uses: smmarty/maxidom_mobile/.github/workflows/_distribute_ios_to_test_flight.yaml.yml@master
     with:
       flavor: ${{ github.event.inputs.flavor}}
       release_notes: ${{ github.event.inputs.release_notes }}
