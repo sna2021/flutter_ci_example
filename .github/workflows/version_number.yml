@@ -17,9 +17,9 @@ jobs:
 
       - name: Read YAML Data
         uses: KJ002/read-yaml@1.5
-        id: pubspec
+        id: flutter_version
         with:
          file: './pubspec.yaml'
          key-path: '["environment","flutter"]'
       - name: Show flutter version
-        run: echo 'flutter version:' ${{ steps.pubspec.outputs.data }}
+        run: echo 'flutter version:' ${{ steps.flutter_version.outputs.data }}

@@ -10,19 +10,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Get flutter version
-        id: flutter_verion
-        uses: the-coding-turtle/ga-yaml-parser@v0.1
+      - name: Read YAML Data
+        uses: KJ002/read-yaml@1.5
+        id: flutter_version
         with:
-          file: "./pubspec.yaml"
-          key: flutter
+          file: './pubspec.yaml'
+          key-path: '["environment","flutter"]'
 
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: $steps.flutter_verion
+          flutter-version: $steps.flutter_version.outputs.data
           channel: 'stable'
 
       - name: Check flow
