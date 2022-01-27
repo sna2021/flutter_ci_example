@@ -9,5 +9,18 @@ jobs:
     name: Test action
     steps:
       - uses: actions/checkout@v2
+      - name: increment
+        run: sh .github/scripts/increment_version.sh
+
       - name: Commit message
-        run: echo 'message:' ${{ github.event.head_commit.message }}
+        run: echo ${{ github.event.head_commit.message }}
+
+      - name: Read Flutter version
+        uses: KJ002/read-yaml@1.5
+        id: version
+        with:
+          file: './pubspec.yaml'
+          key-path: '["version"]'
+
+      - name: Show build version
+        run: echo 'version:' ${{ steps.version.outputs.data }}
