@@ -16,9 +16,10 @@ jobs:
         run: echo 'version_number:' ${{ steps.get_flutter_version.outputs.version_number }} ' build_number:' ${{ steps.get_flutter_version.outputs.build_number }}
 
       - name: Get flutter version
-        id: pubspec
+        id: flutter_verion
         uses: the-coding-turtle/ga-yaml-parser@v0.1
         with:
           file: "./pubspec.yaml"
+          key: flutter
       - name: Show flutter version
-        run: echo 'flutter version:' ${{ steps.pubspec.flutter }}
+        run: echo 'flutter version:' ${{ steps.flutter_verion }}
