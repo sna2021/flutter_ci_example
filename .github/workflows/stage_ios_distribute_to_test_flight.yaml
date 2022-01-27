@@ -1,4 +1,4 @@
-name: [ STAGE ] Distribute ios to TestFlight
+name: (STAGE) Distribute ios to TestFlight
 on:
   workflow_dispatch:
     inputs:

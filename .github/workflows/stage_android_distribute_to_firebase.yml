@@ -1,4 +1,4 @@
-name: [ STAGE ] Distribute Android to Firebase
+name: (STAGE) istribute Android to Firebase
 
 on:
   workflow_dispatch:
