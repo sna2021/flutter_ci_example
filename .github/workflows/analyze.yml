@@ -29,3 +29,6 @@ jobs:
 
       - name: Check flow
         run: sh ./.github/scripts/flutter_check_flow.sh
+
+      - name: Last commit
+        run: echo git show --summary

@@ -1,4 +1,4 @@
-name: _distribute_ios_to_test_flight
+name: _distribute ios to testflight
 on:
   workflow_call:
     inputs:
