@@ -15,11 +15,11 @@ jobs:
       - name: Output flutter version
         run: echo 'version_number:' ${{ steps.get_flutter_version.outputs.version_number }} ' build_number:' ${{ steps.get_flutter_version.outputs.build_number }}
 
-      name: Read YAML Data
-      uses: KJ002/read-yaml@1.5
-      id: pubspec
-      with:
-        file: './pubspec.yaml'
-        key-path: '["flutter"]'
+      - name: Read YAML Data
+        uses: KJ002/read-yaml@1.5
+        id: pubspec
+        with:
+         file: './pubspec.yaml'
+         key-path: '["flutter"]'
       - name: Show flutter version
         run: echo 'flutter version:' ${{ pubspec }}
