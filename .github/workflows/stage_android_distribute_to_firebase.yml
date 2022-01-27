@@ -1,0 +1,34 @@
+name: [ STAGE ] Distribute Android to Firebase
+on:
+  workflow_dispatch:
+    inputs:
+      flavor:
+        # appbundle доступен если в Firebase Distribution настроен Service Account для GP
+        description: '(dev или prod)'
+        required: true
+        default: dev
+      build_type:
+        # appbundle доступен если в Firebase Distribution настроен Service Account для GP
+        description: '(Сейчас только apk)'
+        required: true
+        default: apk
+      testers_group:
+        description: 'Название группы тестеров из Firebase Distribution'
+        required: true
+        default: secret_inner
+      release_notes:
+        description: 'Описание для сборки'
+        required: true
+
+jobs:
+  distribute_to_firebase:
+    name: Distribute Android to Firebase [STAGE]
+    uses: smmarty/maxidom_mobile/.github/workflows/_distribute_android_to_firebase.yml@main
+    with:
+      build_type: ${{ github.event.inputs.build_type }}
+      testers_group: ${{ github.event.inputs.testers_group }}
+      release_notes: ${{ github.event.inputs.release_notes }}
+      flavor: ${{ github.event.inputs.flavor }}
+    secrets:
+      firebase_app_id: ${{ secrets.FIREBASE_ANDROID_STAGE_APP_ID }}
+      firebase_token: ${{ secrets.FIREBASE_TOKEN }}
