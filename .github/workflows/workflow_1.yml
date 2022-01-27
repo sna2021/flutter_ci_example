@@ -1,0 +1,15 @@
+name: _Workflow 1
+
+on:
+  workflow_call:
+    inputs:
+      input_data:
+        required: true
+        type: string
+jobs:
+  build:
+    name: workflow 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run script 1
+        run: sh ./.github/scripts/script_1.sh
