@@ -2,33 +2,14 @@ name: Analyze project code
 on:
   workflow_dispatch:
   pull_request:
+  push:
     branches: [ master ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    name: Analyze project code
+    runs-on: [self-hosted]
+    name: Test action
     steps:
       - uses: actions/checkout@v2
-
-#      - name: Read Flutter version
-#        uses: KJ002/read-yaml@1.5
-#        id: flutter_version
-#        with:
-#          file: './pubspec.yaml'
-#          key-path: '["environment","flutter"]'
-#
-#      - name: Get Flutter
-#        uses: actions/setup-java@v1
-#        with:
-#          java-version: '12.x'
-#      - uses: subosito/flutter-action@v1
-#        with:
-#          flutter-version: ${{ steps.flutter_version.outputs.data }}
-#          channel: 'stable'
-#
-#      - name: Check flow
-#        run: sh ./.github/scripts/flutter_check_flow.sh
-
-      - name: Last commit
-        run: sh ./.github/scripts/get_last_commit.sh
+      - name: Commit message
+        run: echo 'message:' ${{ github.event.head_commit.message }}

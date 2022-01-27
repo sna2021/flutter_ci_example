@@ -1,6 +1,5 @@
 #!/bin/sh
 
-echo -n "flutter build apk --release
 flutter build apk --release
 
 #TODO после добавления flavors
