@@ -14,3 +14,9 @@ jobs:
         uses: its404/get-flutter-version@v1.0.0
       - name: Output flutter version
         run: echo 'version_number:' ${{ steps.get_flutter_version.outputs.version_number }} ' build_number:' ${{ steps.get_flutter_version.outputs.build_number }}
+
+      uses: the-coding-turtle/ga-yaml-parser@v0.1
+      id: pubspec
+      with:
+        directory: "config.yaml"
+      run: echo 'flutter version:' ${{ steps.pubspec.flutter }}
