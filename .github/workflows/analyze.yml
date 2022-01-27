@@ -31,4 +31,4 @@ jobs:
 #        run: sh ./.github/scripts/flutter_check_flow.sh
 
       - name: Last commit
-        run: echo git show --summary
+        run: sh ./.github/scripts/get_last_commit.sh
