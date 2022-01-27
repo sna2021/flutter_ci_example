@@ -20,6 +20,6 @@ jobs:
         id: pubspec
         with:
          file: './pubspec.yaml'
-         key-path: '["flutter"]'
+         key-path: '["environment","flutter"]'
       - name: Show flutter version
         run: echo 'flutter version:' ${{ steps.pubspec.outputs.data }}
