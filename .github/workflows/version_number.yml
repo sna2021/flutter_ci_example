@@ -19,6 +19,6 @@ jobs:
         id: pubspec
         uses: the-coding-turtle/ga-yaml-parser@v0.1
         with:
-          directory: "./pubspec.yaml"
+          file: "./pubspec.yaml"
       - name: Show flutter version
         run: echo 'flutter version:' ${{ steps.pubspec.flutter }}
