@@ -22,7 +22,7 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: ${{ steps.flutter_verion }}
+          flutter-version: $steps.flutter_verion
           channel: 'stable'
 
       - name: Check flow

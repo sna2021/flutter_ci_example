@@ -22,4 +22,4 @@ jobs:
           file: "./pubspec.yaml"
           key: flutter
       - name: Show flutter version
-        run: echo 'flutter version:' ${{ steps.flutter_verion }}
+        run: echo 'flutter version:' $steps.flutter_verion
