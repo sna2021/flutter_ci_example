@@ -25,7 +25,7 @@ on:
 jobs:
   distribute_to_firebase:
     name: Distribute Android to Firebase [STAGE]
-    uses: smmarty/maxidom_mobile/.github/workflows/_distribute_android_to_firebase.yml@master
+    uses: sna2021/flutter_ci_example/.github/workflows/_distribute_android_to_firebase.yml@main
     with:
       build_type: ${{ github.event.inputs.build_type }}
       testers_group: ${{ github.event.inputs.testers_group }}
