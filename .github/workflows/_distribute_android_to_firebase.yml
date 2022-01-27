@@ -1,3 +1,4 @@
+name: _distribute_android_to_firebase
 on:
   workflow_call:
     inputs:
