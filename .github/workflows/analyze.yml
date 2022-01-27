@@ -9,12 +9,20 @@ jobs:
     runs-on: [self-hosted]
     steps:
       - uses: actions/checkout@v2
+
+      - name: Get flutter version
+        id: flutter_verion
+        uses: the-coding-turtle/ga-yaml-parser@v0.1
+        with:
+          file: "./pubspec.yaml"
+          key: flutter
+
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '2.2'
+          flutter-version: steps.flutter_verion
           channel: 'stable'
 
       - name: Check flow
