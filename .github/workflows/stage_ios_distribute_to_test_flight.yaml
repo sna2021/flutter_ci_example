@@ -9,7 +9,8 @@ on:
         default: dev
       release_notes:
         description: 'Описание для сборки'
-        required: false
+        required: true
+        default: ''
 jobs:
   distribute_to_firebase:
     name: Distribute IOS to TestFlight [STAGE]
