@@ -10,6 +10,11 @@
       "colour": "#00ff00",
       "description": "Android folder changed"
     },
+    "web": {
+      "name": "web",
+      "colour": "#00ff00",
+      "description": "Web folder changed"
+    },
     "fix": {
       "name": "fix",
       "colour": "#00ff00",
@@ -27,7 +32,7 @@
       "conditions": [
         {
           "type": "filesMatch",
-          "glob": "ios/*"
+          "glob": "ios/**"
         }
       ]
     },
@@ -36,7 +41,16 @@
       "conditions": [
         {
           "type": "filesMatch",
-          "glob": "android/*"
+          "glob": "android/**"
+        }
+      ]
+    },
+    "web": {
+      "requires": 1,
+      "conditions": [
+        {
+          "type": "filesMatch",
+          "glob": "web/**"
         }
       ]
     },
@@ -45,11 +59,11 @@
       "conditions": [
         {
           "type": "branchMatches",
-          "pattern": "feature/*"
+          "pattern": "feature/**"
         },
         {
           "type": "branchMatches",
-          "pattern": "features/*"
+          "pattern": "features/**"
         }
       ]
     },
@@ -58,11 +72,11 @@
       "conditions": [
         {
           "type": "branchMatches",
-          "pattern": "fix/*"
+          "pattern": "fix/**"
         },
         {
           "type": "branchMatches",
-          "pattern": "hotfix/*"
+          "pattern": "hotfix/**"
         }
       ]
     }
