@@ -3,7 +3,7 @@ on:
     types: [opened,edited]
 jobs:
   specific_review_requested:
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
