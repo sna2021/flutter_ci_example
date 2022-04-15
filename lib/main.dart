@@ -3,6 +3,7 @@ import 'package:app_logger/app_logger.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  ///sdfsdf
   final env = AppEnv.initFromConsole();
   runApp(MaterialApp(
     title: 'Env test',
