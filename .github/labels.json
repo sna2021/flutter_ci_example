@@ -1,0 +1,118 @@
+{
+  "labels": {
+    "ios": {
+      "name": "ios",
+      "colour": "#00ff00",
+      "description": "IOS folder changed"
+    },
+    "android": {
+      "name": "android",
+      "colour": "#00ff00",
+      "description": "Android folder changed"
+    },
+    "web": {
+      "name": "web",
+      "colour": "#00ff00",
+      "description": "Web folder changed"
+    },
+    "fix": {
+      "name": "fix",
+      "colour": "#00ff00",
+      "description": "FIX"
+    },
+    "feature": {
+      "name": "feature",
+      "colour": "#00ff00",
+      "description": "FEATURE"
+    },
+    "main_error": {
+      "name": "MAIN CHANGED!!!",
+      "colour": "#00ff00",
+      "description": "target has changes"
+    }
+  },
+  "pr": {
+    "ios": {
+      "requires": 1,
+      "conditions": [
+        {
+          "type": "filesMatch",
+          "glob": "ios/**/*"
+        },
+        {
+          "type": "filesMatch",
+          "glob": "ios/*"
+        }
+      ]
+    },
+    "android": {
+      "requires": 1,
+      "conditions": [
+        {
+          "type": "filesMatch",
+          "glob": "android/**/*"
+        },
+        {
+          "type": "filesMatch",
+          "glob": "android/*"
+        }
+      ]
+    },
+    "web": {
+      "requires": 1,
+      "conditions": [
+        {
+          "type": "filesMatch",
+          "glob": "web/**/*"
+        },
+        {
+          "type": "filesMatch",
+          "glob": "web/*"
+        }
+      ]
+    },
+    "feature": {
+      "requires": 1,
+      "conditions": [
+        {
+          "type": "branchMatches",
+          "pattern": "^features\\/"
+        },
+        {
+          "type": "branchMatches",
+          "pattern": "^feature\\/"
+        }
+      ]
+    },
+    "fix": {
+      "requires": 1,
+      "conditions": [
+        {
+          "type": "branchMatches",
+          "pattern": "^fix\\/"
+        },
+        {
+          "type": "branchMatches",
+          "pattern": "^hotfix\\/"
+        }
+      ]
+    },
+    "main_error": {
+      "requires": 1,
+      "conditions": [
+        {
+          "type": "filesMatch",
+          "pattern": "**/lib/main.dart"
+        },
+        {
+          "type": "filesMatch",
+          "pattern": "**/lib/targets/stage_main.dart"
+        },
+        {
+          "type": "filesMatch",
+          "pattern": "**/lib/targets/prod_main.dart"
+        }
+      ]
+    }
+  }
+}
