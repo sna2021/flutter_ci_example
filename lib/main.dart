@@ -16,8 +16,6 @@ class HomePage extends StatelessWidget {
 
   final AppEnv env;
 
-
-  //TODO
   @override
   Widget build(BuildContext context) {
     ///
