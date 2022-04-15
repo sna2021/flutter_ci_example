@@ -106,6 +106,10 @@
         },
         {
           "type": "filesMatch",
+          "glob": "**"
+        },
+        {
+          "type": "filesMatch",
           "glob": "**/lib/targets/stage_main.dart"
         },
         {
