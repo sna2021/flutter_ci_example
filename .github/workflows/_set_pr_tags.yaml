@@ -4,10 +4,24 @@ on:
     types: [opened, edited, closed, reopened, ready_for_review, synchronize]
 jobs:
   labeler:
+    permissions:
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
     name: Label the PR size
     steps:
       - uses: actions/checkout@v3
+      - name: Run Labeler
+        if: success()
+        uses: crazy-max/ghaction-github-labeler@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          yaml-file: .github/labels.yml
+          skip-delete: false
+          dry-run: false
+          exclude: |
+            help*
+            *issue
       - uses: codelytv/pr-size-labeler@v1
         name: Size labeling
         with:
@@ -28,6 +42,11 @@ jobs:
             Note this PR might be rejected due to its size.
       #https://github.com/marketplace/actions/super-labeler
       - uses: IvanFon/super-labeler-action@v1
-        name: Files labeling
+        name: Branch Labels
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      #https://github.com/marketplace/actions/labeler
+      - uses: actions/labeler@v4
+        name: File labels
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

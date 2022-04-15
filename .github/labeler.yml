@@ -1,0 +1,10 @@
+dart:
+  - any: [ 'lib/**/*' ]
+android:
+  - any: [ 'android/**/*','android/*' ]
+ios:
+  - any: [ 'ios/**/*','ios/*' ]
+web:
+  - any: [ 'web/**/*','web/*' ]
+main_target:
+  - any: [ 'lib/main.dart','lib/targets/*' ]
