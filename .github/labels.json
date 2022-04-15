@@ -17,7 +17,7 @@
     },
     "fix": {
       "name": "fix",
-      "colour": "#00ff00",
+      "colour": "#009b76",
       "description": "FIX"
     },
     "feature": {
