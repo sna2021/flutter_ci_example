@@ -32,6 +32,27 @@
     }
   },
   "pr": {
+    "main_error": {
+      "requires": 1,
+      "conditions": [
+        {
+          "type": "filesMatch",
+          "glob": "**/lib/main.dart"
+        },
+        {
+          "type": "filesMatch",
+          "glob": "**"
+        },
+        {
+          "type": "filesMatch",
+          "glob": "**/lib/targets/stage_main.dart"
+        },
+        {
+          "type": "filesMatch",
+          "glob": "**/lib/targets/prod_main.dart"
+        }
+      ]
+    },
     "ios": {
       "requires": 1,
       "conditions": [
@@ -94,27 +115,6 @@
         {
           "type": "branchMatches",
           "pattern": "^hotfix\\/"
-        }
-      ]
-    },
-    "main_error": {
-      "requires": 1,
-      "conditions": [
-        {
-          "type": "filesMatch",
-          "glob": "**/lib/main.dart"
-        },
-        {
-          "type": "filesMatch",
-          "glob": "**"
-        },
-        {
-          "type": "filesMatch",
-          "glob": "**/lib/targets/stage_main.dart"
-        },
-        {
-          "type": "filesMatch",
-          "glob": "**/lib/targets/prod_main.dart"
         }
       ]
     }
