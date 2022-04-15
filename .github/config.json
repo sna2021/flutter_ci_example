@@ -1,0 +1,307 @@
+[
+  {
+    "root": ".",
+    "projectType": "other",
+    "versioning": {
+      "source": "milestones",
+      "type": "SemVer"
+    },
+    "sharedConfig": {
+      "labels": {
+        "bug": {
+          "requires": 1,
+          "conditions": [
+            {
+              "type": "titleMatches",
+              "pattern": "/^bug(\\(.*\\))?:/i"
+            },
+            {
+              "type": "descriptionMatches",
+              "pattern": "/(created|new|opened|made)( an| a)? bug/i"
+            }
+          ]
+        },
+        "revert": {
+          "requires": 2,
+          "conditions": [
+            {
+              "type": "titleMatches",
+              "pattern": "/^revert(\\(.*\\))?:/i"
+            },
+            {
+              "type": "titleMatches",
+              "pattern": "/^maint(\\(.*\\))?:/i"
+            },
+            {
+              "type": "titleMatches",
+              "pattern": "/^maintenance(\\(.*\\))?:/i"
+            },
+            {
+              "type": "descriptionMatches",
+              "pattern": "/^type:(,| |Style|Refactoring|Optimisation|Deprecated|Removal)*revert/im"
+            }
+          ]
+        },
+        "deprecated": {
+          "requires": 2,
+          "conditions": [
+            {
+              "type": "titleMatches",
+              "pattern": "/^dep(\\(.*\\))?:/i"
+            },
+            {
+              "type": "titleMatches",
+              "pattern": "/^deprecated(\\(.*\\))?:/i"
+            },
+            {
+              "type": "titleMatches",
+              "pattern": "/^maint(\\(.*\\))?:/i"
+            },
+            {
+              "type": "titleMatches",
+              "pattern": "/^maintenance(\\(.*\\))?:/i"
+            },
+            {
+              "type": "descriptionMatches",
+              "pattern": "/^type:(,| |Style|Refactoring|Optimisation|Revert|Removal)*deprecated/im"
+            }
+          ]
+        },
+        "removal": {
+          "requires": 2,
+          "conditions": [
+            {
+              "type": "titleMatches",
+              "pattern": "/^removal(\\(.*\\))?:/i"
+            },
+            {
+              "type": "titleMatches",
+              "pattern": "/^maint(\\(.*\\))?:/i"
+            },
+            {
+              "type": "titleMatches",
+              "pattern": "/^maintenance(\\(.*\\))?:/i"
+            },
+            {
+              "type": "descriptionMatches",
+              "pattern": "/^type:(,| |Style|Refactoring|Optimisation|Revert|Deprecated)*removal/im"
+            }
+          ]
+        },
+        "discussion": {
+          "requires": 1,
+          "conditions": [
+            {
+              "type": "titleMatches",
+              "pattern": "/^discussion(\\(.*\\))?:/i"
+            }
+          ]
+        },
+        "documentation": {
+          "requires": 1,
+          "conditions": [
+            {
+              "type": "titleMatches",
+              "pattern": "/^docs(\\(.*\\))?:/i"
+            },
+            {
+              "type": "titleMatches",
+              "pattern": "/^documentation(\\(.*\\))?:/i"
+            }
+          ]
+        },
+        "feature": {
+          "requires": 1,
+          "conditions": [
+            {
+              "type": "branchMatches",
+              "pattern": "^feature\\/"
+            },
+            {
+              "type": "branchMatches",
+              "pattern": "^features\\/"
+            },
+            {
+              "type": "titleMatches",
+              "pattern": "/^feat(\\(.*\\))?:/i"
+            },
+            {
+              "type": "titleMatches",
+              "pattern": "/^enhance(\\(.*\\))?:/i"
+            },
+            {
+              "type": "titleMatches",
+              "pattern": "/^feature(\\(.*\\))?:/i"
+            },
+            {
+              "type": "titleMatches",
+              "pattern": "/^enhancement(\\(.*\\))?:/i"
+            }
+          ]
+        },
+        "fix": {
+          "requires": 1,
+          "conditions": [
+            {
+              "type": "branchMatches",
+              "pattern": "^fix\\/"
+            },
+            {
+              "type": "branchMatches",
+              "pattern": "^hotfix\\/"
+            },
+            {
+              "type": "titleMatches",
+              "pattern": "/^fix(\\(.*\\))?:/i"
+            }
+          ]
+        },
+        "refactoring": {
+          "requires": 1,
+          "conditions": [
+            {
+              "type": "branchMatches",
+              "pattern": "^refactoring\\/"
+            }
+          ]
+        },
+        "android": {
+          "requires": 1,
+          "conditions": [
+            {
+              "type": "filesMatch",
+              "glob": "android/**/*"
+            }
+          ]
+        },
+        "ios": {
+          "requires": 1,
+          "conditions": [
+            {
+              "type": "filesMatch",
+              "glob": "ios/**/*"
+            }
+          ]
+        },
+        "web": {
+          "requires": 1,
+          "conditions": [
+            {
+              "type": "filesMatch",
+              "glob": "web/**/*"
+            }
+          ]
+        },
+        "main_target": {
+          "requires": 1,
+          "conditions": [
+            {
+              "type": "filesMatch",
+              "glob": "**/main.dart"
+            },
+            {
+              "type": "filesMatch",
+              "glob": "**/prod_main.dart"
+            },
+            {
+              "type": "filesMatch",
+              "glob": "**/stage_main.dart"
+            }
+          ]
+        }
+      },
+      "pr": {
+        "labels": {
+          "XS": {
+            "requires": 1,
+            "conditions": [
+              {
+                "type": "changesSize",
+                "min": 0,
+                "max": 10
+              }
+            ]
+          },
+          "S": {
+            "requires": 1,
+            "conditions": [
+              {
+                "type": "changesSize",
+                "min": 10,
+                "max": 30
+              }
+            ]
+          },
+          "M": {
+            "requires": 1,
+            "conditions": [
+              {
+                "type": "changesSize",
+                "min": 40,
+                "max": 100
+              }
+            ]
+          },
+          "L": {
+            "requires": 1,
+            "conditions": [
+              {
+                "type": "changesSize",
+                "min": 100,
+                "max": 500
+              }
+            ]
+          },
+          "XL": {
+            "requires": 1,
+            "conditions": [
+              {
+                "type": "changesSize",
+                "min": 500,
+                "max": 1000
+              }
+            ]
+          },
+          "XXL": {
+            "requires": 1,
+            "conditions": [
+              {
+                "type": "changesSize",
+                "min": 1000
+              }
+            ]
+          },
+          "fixConfirmed": {
+            "requires": 6,
+            "conditions": [
+              {
+                "type": "descriptionMatches",
+                "pattern": "/^- \\[x\\] fix Confirmed by ((@.*& .*){4,}|(@.*& )*@(tgtgamer|videndum\\/.*))/im"
+              },
+              {
+                "type": "descriptionMatches",
+                "pattern": "/^- \\[x\\] have fixed on a clean installation/im"
+              },
+              {
+                "type": "descriptionMatches",
+                "pattern": "/^- \\[x\\] have fixed on a stable build/im"
+              },
+              {
+                "type": "descriptionMatches",
+                "pattern": "/^- \\[x\\] have fixed on a development build/im"
+              },
+              {
+                "type": "descriptionMatches",
+                "pattern": "/^- \\[x\\] have included logs or screenshots/im"
+              },
+              {
+                "type": "descriptionMatches",
+                "pattern": "/^- \\[x\\] have linked any related/im"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+]
