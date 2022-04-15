@@ -1,7 +1,7 @@
 name: labeler
 on:
   pull_request:
-    types: [opened,edited]
+    types: [opened, edited, closed, reopened, ready_for_review, synchronize]
 jobs:
   labeler:
     runs-on: ubuntu-latest
@@ -22,16 +22,12 @@ jobs:
           l_max_size: '1000'
           xl_label: 'XL'
           fail_if_xl: 'false'
-
-
           message_if_xl: >
             This PR exceeds the recommended size of 1000 lines.
             Please make sure you are NOT addressing multiple issues with one PR.
             Note this PR might be rejected due to its size.
-
-      - uses: TimonVS/pr-labeler-action@v3
-        name: Branch labeling
+      #https://github.com/marketplace/actions/super-labeler
+      - uses: IvanFon/super-labeler-action@v1
+        name: Files labeling
         with:
-          configuration-path: .github/pr-labeler.yml
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
