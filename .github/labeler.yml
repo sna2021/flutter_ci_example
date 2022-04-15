@@ -1,5 +1,3 @@
-dart:
-  - any: [ 'lib/**/*' ]
 android:
   - any: [ 'android/**/*','android/*' ]
 ios:
