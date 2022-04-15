@@ -2,32 +2,32 @@
   "labels": {
     "ios": {
       "name": "ios",
-      "colour": "#00ff00",
+      "colour": "#000000",
       "description": "IOS folder changed"
     },
     "android": {
       "name": "android",
-      "colour": "#00ff00",
+      "colour": "#32CD32",
       "description": "Android folder changed"
     },
     "web": {
       "name": "web",
-      "colour": "#00ff00",
+      "colour": "#FF00FF",
       "description": "Web folder changed"
     },
     "fix": {
       "name": "fix",
-      "colour": "#009b76",
+      "colour": "#F4A460",
       "description": "FIX"
     },
     "feature": {
       "name": "feature",
-      "colour": "#00ff00",
+      "colour": "#4682B4",
       "description": "FEATURE"
     },
     "main_error": {
       "name": "MAIN CHANGED!!!",
-      "colour": "#00ff00",
+      "colour": "#CC0000",
       "description": "target has changes"
     }
   },
@@ -102,15 +102,15 @@
       "conditions": [
         {
           "type": "filesMatch",
-          "pattern": "**/lib/main.dart"
+          "glob": "**/lib/main.dart"
         },
         {
           "type": "filesMatch",
-          "pattern": "**/lib/targets/stage_main.dart"
+          "glob": "**/lib/targets/stage_main.dart"
         },
         {
           "type": "filesMatch",
-          "pattern": "**/lib/targets/prod_main.dart"
+          "glob": "**/lib/targets/prod_main.dart"
         }
       ]
     }
