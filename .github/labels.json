@@ -90,15 +90,15 @@
       "conditions": [
         {
           "type": "filesMatch",
-          "glob": "**/lib/main.dart"
+          "pattern": "**/lib/main.dart"
         },
         {
           "type": "filesMatch",
-          "glob": "**/lib/targets/stage_main.dart"
+          "pattern": "**/lib/targets/stage_main.dart"
         },
         {
           "type": "filesMatch",
-          "glob": "**/lib/targets/prod_main.dart"
+          "pattern": "**/lib/targets/prod_main.dart"
         }
       ]
     }
