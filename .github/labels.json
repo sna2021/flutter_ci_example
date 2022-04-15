@@ -32,7 +32,7 @@
       "conditions": [
         {
           "type": "filesMatch",
-          "glob": "ios/**"
+          "glob": "ios/**/*"
         }
       ]
     },
@@ -41,7 +41,7 @@
       "conditions": [
         {
           "type": "filesMatch",
-          "glob": "android/**"
+          "glob": "android/**/*"
         }
       ]
     },
@@ -50,7 +50,7 @@
       "conditions": [
         {
           "type": "filesMatch",
-          "glob": "web/**"
+          "glob": "web/**/*"
         }
       ]
     },
