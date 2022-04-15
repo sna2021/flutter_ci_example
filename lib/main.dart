@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 void main() {
   final env = AppEnv.initFromConsole();
-  logJust('$env');
   runApp(MaterialApp(
     title: 'Env test',
     theme: ThemeData.light(),
