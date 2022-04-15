@@ -6,7 +6,6 @@ void main() {
   final env = AppEnv.initFromConsole();
   runApp(MaterialApp(
     title: 'Env test',
-
     theme: ThemeData.light(),
     home: HomePage(env),
   ));
