@@ -59,29 +59,29 @@
         }
       ]
     },
-    "fix": {
-      "requires": 1,
-      "conditions": [
-        {
-          "type": "branchMatches",
-          "pattern": "feature/**"
-        },
-        {
-          "type": "branchMatches",
-          "pattern": "features/**"
-        }
-      ]
-    },
     "feature": {
       "requires": 1,
       "conditions": [
         {
           "type": "branchMatches",
-          "pattern": "fix/**"
+          "pattern": "^features\\/"
         },
         {
           "type": "branchMatches",
-          "pattern": "hotfix/**"
+          "pattern": "^feature\\/"
+        }
+      ]
+    },
+    "fix": {
+      "requires": 1,
+      "conditions": [
+        {
+          "type": "branchMatches",
+          "pattern": "^fix\\/"
+        },
+        {
+          "type": "branchMatches",
+          "pattern": "^hotfix\\/"
         }
       ]
     },
