@@ -7,14 +7,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-          - name: Run Labeler
-            #if: success()
-            uses: crazy-max/ghaction-github-labeler@v3
-            with:
-              github-token: ${{ secrets.GITHUB_TOKEN }}
-              yaml-file: .github/labels.yml
-              skip-delete: false
-              dry-run: false
-              exclude: |
-                help*
-                *issue
+      - name: Run Labeler
+        #if: success()
+        uses: crazy-max/ghaction-github-labeler@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          yaml-file: .github/labels.yml
+          skip-delete: false
+          dry-run: false
+          exclude: |
+            help*
+            *issue
