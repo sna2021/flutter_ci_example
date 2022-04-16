@@ -3,7 +3,7 @@ on:
     types: [opened, edited, closed, reopened, ready_for_review, synchronize]
 jobs:
   labeler:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest,self-hosted]
     name: Label the PR size
     steps:
       - uses: actions/checkout@v3
