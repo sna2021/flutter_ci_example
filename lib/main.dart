@@ -20,7 +20,6 @@ class HomePage extends StatelessWidget {
   //TODO
   @override
   Widget build(BuildContext context) {
-    ///
     return Scaffold(
       body: Center(
         child: Column(

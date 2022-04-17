@@ -11,7 +11,7 @@
   color: "F4A460"
 - name: "feature"
   color: "4682B4"
-- name: "MAIN CHANGED!!!"
+- name: "main_changed"
   color: "CC0000"
   description: "any target files have changes"
 - name: "XS"

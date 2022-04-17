@@ -4,7 +4,5 @@ ios:
   - any: [ 'ios/**/*','ios/*' ]
 web:
   - any: [ 'web/**/*','web/*' ]
-MAIN CHANGED!!!:
-  - all: [ 'lib/main.dart']
-target_changed:
-  - all: [ 'lib/targets/*']
+main_changed:
+  - any: [ 'lib/main.dart','lib/targets/*' ]
