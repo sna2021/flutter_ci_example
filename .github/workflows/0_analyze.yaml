@@ -1,0 +1,31 @@
+name: 0_Analyze project code
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: [self-hosted]
+    name: Analyze project code
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read Flutter version
+        uses: KJ002/read-yaml@1.5
+        id: flutter_version
+        with:
+          file: './pubspec.yaml'
+          key-path: '["environment","flutter"]'
+
+      - name: Get Flutter
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: ${{ steps.flutter_version.outputs.data }}
+          channel: 'stable'
+
+      - name: Check flow
+        run: sh ./.github/scripts/flutter_check_flow.sh

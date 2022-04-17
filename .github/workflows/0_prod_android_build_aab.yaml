@@ -1,0 +1,61 @@
+name: 0_(PROD) Build github artifacts
+on:
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: 'appbundle или apk'
+        required: true
+        default: appbundle
+        type: string
+
+jobs:
+  build_artifact:
+    name: Build Github arctifact
+    runs-on: [ self-hosted ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read Flutter version
+        uses: KJ002/read-yaml@1.5
+        id: flutter_version
+        with:
+          file: './pubspec.yaml'
+          key-path: '["environment","flutter"]'
+
+      - name: Get Flutter
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: ${{ steps.flutter_version.outputs.data }}
+          channel: 'stable'
+
+      - name: Check flow
+        run: sh ./.github/scripts/flutter_check_flow.sh
+
+      - name: Decrypt Android keys
+        run: sh ./.github/scripts/android/decrypt_android_keys.sh
+        env:
+          ANDROID_KEYS_SECRET_PASSPHRASE: ${{ secrets.ANDROID_KEYS_SECRET_PASSPHRASE }}
+
+      - name: Build apk
+        run: sh ./.github/scripts/android/build_android.sh
+        env:
+          BUILD_FLAVOR: prod
+          ANDROID_BUILD_TYPE: ${{ github.event.inputs.build_type }}
+
+      - name: Upload apk to Github
+        if: ${{ github.event.inputs.build_type == 'apk' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-apk-prod
+          path: ./build/app/outputs/flutter-apk/app-prod-release.apk
+          retention-days: 1
+
+      - name: Upload appbundle to Github
+        if: ${{ github.event.inputs.build_type == 'appbundle' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-aab-prod
+          path: ./build/app/outputs/bundle/prodRelease/app-prod-release.aab
+          retention-days: 1
