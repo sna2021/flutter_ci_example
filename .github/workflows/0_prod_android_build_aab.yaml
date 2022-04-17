@@ -33,10 +33,10 @@ jobs:
       - name: Check flow
         run: sh ./.github/scripts/flutter_check_flow.sh
 
-      - name: Decrypt Android keys
-        run: sh ./.github/scripts/android/decrypt_android_keys.sh
-        env:
-          ANDROID_KEYS_SECRET_PASSPHRASE: ${{ secrets.ANDROID_KEYS_SECRET_PASSPHRASE }}
+#      - name: Decrypt Android keys
+#        run: sh ./.github/scripts/android/decrypt_android_keys.sh
+#        env:
+#          ANDROID_KEYS_SECRET_PASSPHRASE: ${{ secrets.ANDROID_KEYS_SECRET_PASSPHRASE }}
 
       - name: Build apk
         run: sh ./.github/scripts/android/build_android.sh
