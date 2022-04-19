@@ -29,8 +29,10 @@ jobs:
 
       - name: Check flow
         run: sh ./.github/scripts/flutter_check_flow.sh
+
   send_message:
     needs: analyze
+    if: ${{ true }}
     runs-on: ubuntu-latest
     steps:
      - uses: appleboy/telegram-action@master
