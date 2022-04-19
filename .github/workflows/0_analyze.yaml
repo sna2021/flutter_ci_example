@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: (${{ env.github.repository }} / ${{ github.ref.name }}) Analyze project code
+    name: (${{ github.repository }} / ${{ github.ref.name }}) Analyze project code
     steps:
       - uses: actions/checkout@v2
       - name: Read Flutter version
