@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  analyze:
     runs-on: ubuntu-latest
     name: (${{ github.repository }}:${{ github.ref }}) Analyze project code
     steps:
@@ -29,11 +29,14 @@ jobs:
 
       - name: Check flow
         run: sh ./.github/scripts/flutter_check_flow.sh
-
-      - name: send success message
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message: (${{ github.repository }}:${{ github.ref }}) Analyze project code ${{ job.status }} \n ${{ github.event.path }}
+  send_message:
+    needs: analyze
+    runs-on: ubuntu-latest
+    steps:
+     - uses: appleboy/telegram-action@master
+       name: send message
+       with:
+         to: ${{ secrets.TELEGRAM_TO }}
+         token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+         message: (${{ github.repository }}:${{ github.ref }}) Analyze project code ${{ jobs.analyze.status }} \n ${{ github.event.path }}
 
