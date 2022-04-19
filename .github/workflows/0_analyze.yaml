@@ -32,7 +32,7 @@ jobs:
 
   send_message:
     needs: analyze
-    if: ${{ true }}
+    if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
      - uses: appleboy/telegram-action@master
