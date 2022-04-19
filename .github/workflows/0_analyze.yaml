@@ -36,5 +36,5 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           if: success()
-          message: (${{ github.repository }}:${{ github.ref }}) Analyze project code Success
-          else: (${{ github.repository }}:${{ github.ref }}) Analyze project code Failure
+          message: (${{ github.repository }}:${{ github.ref }}) Analyze project code Success \n ${{ github.event.path }}
+          else: (${{ github.repository }}:${{ github.ref }}) Analyze project code Failure \n ${{ github.event.path }}
