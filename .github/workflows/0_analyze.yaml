@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: (${GITHUB_REPOSITORY} / ${GITHUB_REF_NAME}) Analyze project code
+    name: (${env["GITHUB_REPOSITORY"]} / ${env["GITHUB_REF_NAME"]}) Analyze project code
     steps:
       - uses: actions/checkout@v2
       - name: Read Flutter version
