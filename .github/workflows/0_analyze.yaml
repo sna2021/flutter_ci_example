@@ -30,11 +30,10 @@ jobs:
       - name: Check flow
         run: sh ./.github/scripts/flutter_check_flow.sh
 
-      - name: send result message
+      - name: send success message
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          if: success()
-          message: (${{ github.repository }}:${{ github.ref }}) Analyze project code Success \n ${{ github.event.path }}
-          else: (${{ github.repository }}:${{ github.ref }}) Analyze project code Failure \n ${{ github.event.path }}
+          message: (${{ github.repository }}:${{ github.ref }}) Analyze project code ${{ job.status }} \n ${{ github.event.path }}
+
