@@ -38,5 +38,5 @@ jobs:
        with:
          to: ${{ secrets.TELEGRAM_TO }}
          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-         message: (${{ github.repository }}:${{ github.ref }}) Analyze project code ${{ jobs.analyze.status }} \n ${{ github.event.path }}
+         message: ${{ needs.analyze.name }} ${{ needs.analyze.status }} \n ${{ github.event.path }}
 
