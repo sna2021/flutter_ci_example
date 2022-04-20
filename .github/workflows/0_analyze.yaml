@@ -9,23 +9,23 @@ jobs:
     runs-on: ubuntu-latest
     name: (${{ github.repository }}:${{ github.ref }}) Analyze project code
     steps:
-      - uses: actions/checkout@v2
-      - name: Read Flutter version
-        uses: KJ002/read-yaml@1.5
-        id: flutter_version
-        with:
-          file: './pubspec.yaml'
-          key-path: '["environment","flutter"]'
-
-      - name: Get Flutter
-        uses: actions/setup-java@v1
-        with:
-          java-version: '12.x'
-
-      - uses: subosito/flutter-action@v1
-        with:
-          flutter-version: ${{ steps.flutter_version.outputs.data }}
-          channel: 'stable'
+#      - uses: actions/checkout@v2
+#      - name: Read Flutter version
+#        uses: KJ002/read-yaml@1.5
+#        id: flutter_version
+#        with:
+#          file: './pubspec.yaml'
+#          key-path: '["environment","flutter"]'
+#
+#      - name: Get Flutter
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: '12.x'
+#
+#      - uses: subosito/flutter-action@v1
+#        with:
+#          flutter-version: ${{ steps.flutter_version.outputs.data }}
+#          channel: 'stable'
 
       - name: Check flow
         run: sh ./.github/scripts/flutter_check_flow.sh
@@ -41,7 +41,7 @@ jobs:
          to: ${{ secrets.TELEGRAM_TO }}
          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
          message: |
-           Repository: ${{ needs.jobs.analyze.name }}
-           Status: ${{ needs.jobs.analyze.status }}
-           Action: ${{ github.event }}
+           Repository: ${{ github.jobs.analyze.name }}
+           Status: ${{ github.jobs.analyze.status }}
+           Action: ${{ github.ref }}
 
