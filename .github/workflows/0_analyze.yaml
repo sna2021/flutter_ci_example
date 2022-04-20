@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     name: (${{ github.repository }}:${{ github.ref }}) Analyze project code
     steps:
-#      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 #      - name: Read Flutter version
 #        uses: KJ002/read-yaml@1.5
 #        id: flutter_version
