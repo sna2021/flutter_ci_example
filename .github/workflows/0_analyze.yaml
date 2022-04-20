@@ -38,6 +38,6 @@ jobs:
           message: |
             Repository: ${{ job.name }}
             Status: ${{ job.status }}
-            Action: ${{ $GITHUB_RUN_ID }}
+            Action: ${{ join(github.server.url,"/",github.repository,"/actions/runs/",github.run.id) }}
 
 
