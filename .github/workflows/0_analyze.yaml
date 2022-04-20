@@ -36,9 +36,11 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            Action: (${{ github.repository }}:${{ github.ref }}) Analyze project code
+            Action: ${{ workflow }}
+            Repository: ${{ github.repository }}
+            Branch:${{ github.ref }}
             Status: ${{ job.status }}
             Runner: ${{ runner.name }}
-            Link: ${{ github.repositoryUrl }}/actions/runs/${{ github.run_id }}
+            Link: ${{ github.repository}}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
 
