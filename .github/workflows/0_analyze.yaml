@@ -26,21 +26,23 @@ jobs:
 #        with:
 #          flutter-version: ${{ steps.flutter_version.outputs.data }}
 #          channel: 'stable'
-
-      - name: Check flow
-        run: sh ./.github/scripts/flutter_check_flow.sh
-      - uses: appleboy/telegram-action@master
-        if: ${{ always() }}
-        name: send message
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message: |
-            Action: ${{ github.workflow }}
-            Repository: ${{ github.repository }}
-            Branch:${{ github.ref }}
-            Status: ${{ job.status }}
-            Runner: ${{ runner.name }}
-            Link: ${{ github.server_url}}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+  send-message:
+    needs: [analyze]
+    runs-on: ubuntu-latest
+   - name: Check flow
+     run: sh ./.github/scripts/flutter_check_flow.sh
+   - uses: appleboy/telegram-action@master
+     if: ${{ always() }}
+     name: Send message
+     with:
+       to: ${{ secrets.TELEGRAM_TO }}
+       token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+       message: |
+         Action: ${{ github.workflow }}
+         Repository: ${{ github.repository }}
+         Branch:${{ github.ref }}
+         Status: ${{ job.status }}
+         Runner: ${{ runner.name }}
+         Link: ${{ github.server_url}}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
 

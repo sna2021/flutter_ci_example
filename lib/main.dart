@@ -20,6 +20,7 @@ class HomePage extends StatelessWidget {
   //TODO
   @override
   Widget build(BuildContext context) {
+    [].firstWhere((element) => false,orElse: (){});
     return Scaffold(
       body: Center(
         child: Column(
