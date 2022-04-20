@@ -36,11 +36,11 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            Action: ${{ github.action }}
+            Action: ${{ github.workflow }}
             Repository: ${{ github.repository }}
             Branch:${{ github.ref }}
             Status: ${{ job.status }}
             Runner: ${{ runner.name }}
-            Link: ${{ github.repository}}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            Link: ${{ github.server_url}}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
 
