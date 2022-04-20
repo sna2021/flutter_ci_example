@@ -10,7 +10,7 @@ jobs:
     name: (${{ github.repository }}:${{ github.ref }}) Analyze project code
     steps:
       - uses: actions/checkout@v2
-  send-message:
+  send_message:
     needs: [analyze]
     runs-on: ubuntu-latest
    - uses: appleboy/telegram-action@master
