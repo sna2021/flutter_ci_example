@@ -36,8 +36,8 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            Repository: ${{ job.name }}
+            Action: ${{ job }}
             Status: ${{ job.status }}
-            Link: ${{ github.server.url }}${{ github.repository }}/actions/runs/${{ github.run.id }}
+            Link: ${{ env.GITHUB_SERVER_URL }}${{ github.repository }}/actions/runs/${{ env.GITHUB_RUN_ID }}
 
 
