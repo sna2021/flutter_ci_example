@@ -1,7 +1,7 @@
 name: 0_Analyze project code
 on:
   workflow_dispatch:
-  pull_request:
+  push:
     branches: [ main ]
 
 jobs:
@@ -17,14 +17,14 @@ jobs:
      if: ${{ always() }}
      name: Send message
      with:
-       to: ${{ secrets.TELEGRAM_TO }}
-       token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-       message: |
-         Action: ${{ github.workflow }}
-         Repository: ${{ github.repository }}
-         Branch:${{ github.ref }}
-         Status: ${{ job.status }}
-         Runner: ${{ runner.name }}
-         Link: ${{ github.server_url}}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+     to: ${{ secrets.TELEGRAM_TO }}
+     token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+     message: |
+       Action: ${{ github.workflow }}
+       Repository: ${{ github.repository }}
+       Branch:${{ github.ref }}
+       Status: ${{ job.status }}
+       Runner: ${{ runner.name }}
+       Link: ${{ github.server_url}}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
 
