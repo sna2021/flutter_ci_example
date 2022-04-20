@@ -36,8 +36,8 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            Repository: ${{ github.jobs.analyze.name }}
-            Status: ${{ github.jobs.analyze.status }}
-            Action: ${{ github.ref }}
+            Repository: ${{ jobs.analyze.name }}
+            Status: ${{ jobs.analyze.status }}
+            Action: $GITHUB_RUN_ID
 
 
