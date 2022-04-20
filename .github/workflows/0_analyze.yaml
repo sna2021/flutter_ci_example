@@ -29,19 +29,15 @@ jobs:
 
       - name: Check flow
         run: sh ./.github/scripts/flutter_check_flow.sh
+      - uses: appleboy/telegram-action@master
+        if: ${{ always() }}
+        name: send message
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            Repository: ${{ github.jobs.analyze.name }}
+            Status: ${{ github.jobs.analyze.status }}
+            Action: ${{ github.ref }}
 
-  send_message:
-    needs: analyze
-    if: ${{ always() }}
-    runs-on: ubuntu-latest
-    steps:
-     - uses: appleboy/telegram-action@master
-       name: send message
-       with:
-         to: ${{ secrets.TELEGRAM_TO }}
-         token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-         message: |
-           Repository: ${{ github.jobs.analyze.name }}
-           Status: ${{ github.jobs.analyze.status }}
-           Action: ${{ github.ref }}
 
