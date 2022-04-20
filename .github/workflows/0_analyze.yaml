@@ -43,5 +43,5 @@ jobs:
          message: |
            Repository: ${{ needs.analyze.name }}
            Status: ${{ needs.analyze.status }}
-           Action: ${{ github.event.path }}
+           Action: ${{ github.event }}
 
