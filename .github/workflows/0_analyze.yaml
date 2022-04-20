@@ -10,27 +10,9 @@ jobs:
     name: (${{ github.repository }}:${{ github.ref }}) Analyze project code
     steps:
       - uses: actions/checkout@v2
-#      - name: Read Flutter version
-#        uses: KJ002/read-yaml@1.5
-#        id: flutter_version
-#        with:
-#          file: './pubspec.yaml'
-#          key-path: '["environment","flutter"]'
-#
-#      - name: Get Flutter
-#        uses: actions/setup-java@v1
-#        with:
-#          java-version: '12.x'
-#
-#      - uses: subosito/flutter-action@v1
-#        with:
-#          flutter-version: ${{ steps.flutter_version.outputs.data }}
-#          channel: 'stable'
   send-message:
     needs: [analyze]
     runs-on: ubuntu-latest
-   - name: Check flow
-     run: sh ./.github/scripts/flutter_check_flow.sh
    - uses: appleboy/telegram-action@master
      if: ${{ always() }}
      name: Send message
