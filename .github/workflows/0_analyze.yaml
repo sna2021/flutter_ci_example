@@ -36,7 +36,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            Action: ${{ workflow }}
+            Action: ${{ github.action }}
             Repository: ${{ github.repository }}
             Branch:${{ github.ref }}
             Status: ${{ job.status }}
